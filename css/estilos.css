@@ -51,6 +51,24 @@ header {
     filter: drop-shadow(5px 5px 10px rgba(3, 44, 87, 10));
 }
 
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    display: inline-flex; /* Hace que el contenedor mida solo lo que ocupa el logo */
+}
+
+.anuncio-tv {
+    font-size: 0.9rem;
+    font-weight: normal;
+    font-style: italic;
+    opacity: 0.75;
+    margin-top: -1px; /* Acerca un poco más el texto al logo */
+    margin-bottom: 0;
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas si no cabe */
+	margin-left: 20px;
+}
+
 .datetime-container {
     display: flex;
     flex-direction: column;
@@ -90,13 +108,14 @@ header {
    ========================================================================== */
 .section-category {
     margin-bottom: 40px;
+	margin-top: 35px; /* Agrega espacio por encima de toda la sección para separarla del header fijo */
 }
 
 .category-label {
     font-family: 'Karantina', cursive, sans-serif;
     font-size: 2.2rem;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.7px;
     text-transform: uppercase;
     margin-bottom: 15px;
     opacity: 0.95;
