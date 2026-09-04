@@ -40,15 +40,14 @@ header {
     z-index: 100;
     background: rgba(20, 20, 35, 0.4);
     backdrop-filter: blur(8px);
-    border-bottom: 0px rgba(20, 20, 35, 0.4); /* Mismo color del fondo para camuflar el corte */
+    border-bottom: 1px solid rgba(20, 20, 35, 0.4); /* Mismo color del fondo para camuflar el corte */
 }
 
-
 .main-title-logo {
-    max-height: 80px;
+    max-height: 70px;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(5px 5px 10px rgba(3, 44, 87, 10));
+    filter: drop-shadow(5px 5px 10px rgba(3, 44, 87, 0.1));
 }
 
 .logo-container {
@@ -66,7 +65,7 @@ header {
     margin-top: -1px; /* Acerca un poco más el texto al logo */
     margin-bottom: 0;
     white-space: nowrap; /* Evita que el texto se rompa en varias líneas si no cabe */
-	margin-left: 20px;
+    margin-left: 20px;
 }
 
 .datetime-container {
@@ -108,7 +107,7 @@ header {
    ========================================================================== */
 .section-category {
     margin-bottom: 40px;
-	margin-top: 35px; /* Agrega espacio por encima de toda la sección para separarla del header fijo */
+    margin-top: 35px; /* Agrega espacio por encima de toda la sección para separarla del header fijo */
 }
 
 .category-label {
@@ -156,7 +155,7 @@ header {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-	border-radius: 8px; /* Ajusta este valor (ej. 6px, 10px, etc.) para redondear sus esquinas */
+    border-radius: 8px; /* Ajusta este valor (ej. 6px, 10px, etc.) para redondear sus esquinas */
 }
 
 /* ==========================================================================
@@ -192,7 +191,7 @@ header {
     margin-bottom: 10px;
 }
 
-.legal-container p, 
+.legal-container p,
 .legal-container li {
     font-size: 0.95rem;
     line-height: 1.7;
@@ -547,4 +546,28 @@ body.tv-mode footer a.tv-focusable:focus {
 .btn-tv-mode:hover {
     background-color: #276CF5;
     transform: scale(1.05);
+}
+
+.header-right-group {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre los iconos, el botón y el reloj */
+}
+
+/* Agrega esto para garantizar que el contenedor de redes sociales esté alineado */
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-icon img {
+    display: block;
+    max-height: 28px; /* O el tamaño de tus iconos */
+    width: auto;
+}
+
+.social-icon img:hover {
+    opacity: 1;
+    transform: scale(1.1); /* Efecto sutil al pasar el cursor */
 }
