@@ -352,7 +352,7 @@ header {
 
 .banner-tab {
     position: fixed;
-    bottom: 150px;
+    bottom: 300px;
     right: 0;
     background: rgba(20, 20, 35, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -469,7 +469,7 @@ footer span {
     }
 
     .banner-tab {
-        bottom: 15px;
+        bottom: 300px;
     }
 }
 
