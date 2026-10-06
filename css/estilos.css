@@ -4,14 +4,14 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
+    font-family: Arial, sans-serif; /* Unificado para mantener coherencia */
+    color: #ffffff;
     background-image: url('../imagenes/blue-degraddated_2.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-color: #1a1a2e;
+    background-color: #0d1117; /* Color de respaldo si no carga la imagen */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -40,7 +40,6 @@ header {
     z-index: 100;
     background: rgba(20, 20, 35, 0.4);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(20, 20, 35, 0.4); /* Mismo color del fondo para camuflar el corte */
 }
 
 .main-title-logo {
@@ -51,10 +50,9 @@ header {
 }
 
 .logo-container {
-    display: flex;
+    display: inline-flex; /* Limpiado el display duplicado */
     flex-direction: column;
     align-items: flex-start;
-    display: inline-flex; /* Hace que el contenedor mida solo lo que ocupa el logo */
 }
 
 .anuncio-tv {
@@ -62,30 +60,29 @@ header {
     font-weight: normal;
     font-style: italic;
     opacity: 0.75;
-    margin-top: -1px; /* Acerca un poco más el texto al logo */
+    margin-top: -1px;
     margin-bottom: 0;
-    white-space: nowrap; /* Evita que el texto se rompa en varias líneas si no cabe */
+    white-space: nowrap;
     margin-left: 20px;
 }
 
 .datetime-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Alinea los textos a la derecha */
+    align-items: flex-end;
     text-align: right;
 }
 
 #date {
-    font-size: 0.85rem; /* Tamaño ajustable para la fecha */
+    font-size: 0.85rem;
     opacity: 0.85;
 }
 
 #clock {
-    font-size: 1.6rem; /* Tamaño ajustable para la hora */
+    font-size: 1.6rem;
     font-weight: bold;
 }
 
-/* Botón de navegación en responsabilidad.html */
 .btn-back {
     color: #ffffff;
     background-color: rgba(2, 67, 128, 0.6);
@@ -102,12 +99,192 @@ header {
     transform: scale(1.03);
 }
 
+.header-right-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-icon img {
+    display: block;
+    max-height: 28px;
+    width: auto;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.social-icon img:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.btn-tv-mode {
+    color: #ffffff;
+    background-color: #024380;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-tv-mode:hover {
+    background-color: #276CF5;
+    transform: scale(1.05);
+}
+
 /* ==========================================================================
-   3. PÁGINA PRINCIPAL (GRID Y TARJETAS)
+   3. SECCIÓN DE BUSCADORES EN FILA (NUEVO DISEÑO)
+   ========================================================================== */
+.search-section-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 25px auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.search-card-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 300px;
+    max-width: 380px;
+}
+
+.btn-toggle-search {
+    background-color: rgba(2, 67, 128, 0.8);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.btn-toggle-search:hover {
+    background-color: #024380;
+    transform: scale(1.02);
+}
+
+.search-container {
+    background: rgba(20, 20, 35, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+    transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+}
+
+.search-container.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 20px;
+    margin-top: 0;
+    border: none;
+    pointer-events: none;
+    transform: translateY(-10px);
+}
+
+.search-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.search-input-group input {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 1rem;
+}
+
+.search-input-group input:focus {
+    outline: 2px solid #58a6ff;
+}
+
+.btn-search-submit {
+    background-color: #024380;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-search-submit:hover {
+    background-color: #276CF5;
+}
+
+.domains-control-group {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 12px;
+}
+
+.domains-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.domains-label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.master-check-label {
+    color: #58a6ff;
+    font-weight: bold;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.domains-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 8px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ==========================================================================
+   4. PÁGINA PRINCIPAL (GRID Y TARJETAS)
    ========================================================================== */
 .section-category {
     margin-bottom: 40px;
-    margin-top: 35px; /* Agrega espacio por encima de toda la sección para separarla del header fijo */
+    margin-top: 35px;
 }
 
 .category-label {
@@ -155,11 +332,11 @@ header {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    border-radius: 8px; /* Ajusta este valor (ej. 6px, 10px, etc.) para redondear sus esquinas */
+    border-radius: 8px;
 }
 
 /* ==========================================================================
-   4. PÁGINA LEGAL (RESPONSABILIDAD.HTML)
+   5. PÁGINA LEGAL (RESPONSABILIDAD.HTML)
    ========================================================================== */
 .main-legal {
     max-width: 900px;
@@ -203,9 +380,8 @@ header {
 }
 
 /* ==========================================================================
-   5. COMPONENTES INTERACTIVOS (MODAL Y BANNER FLOTANTE)
+   6. COMPONENTES INTERACTIVOS (MODAL Y BANNER FLOTANTE)
    ========================================================================== */
-/* --- Modal de Aviso --- */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -273,7 +449,6 @@ header {
     transform: scale(1.03);
 }
 
-/* --- Banner Flotante y Pestaña --- */
 .floating-banner {
     position: fixed;
     bottom: 120px;
@@ -382,7 +557,7 @@ header {
 }
 
 /* ==========================================================================
-   6. PIE DE PÁGINA (FOOTER)
+   7. PIE DE PÁGINA (FOOTER)
    ========================================================================== */
 footer {
     text-align: center;
@@ -414,73 +589,7 @@ footer span {
 }
 
 /* ==========================================================================
-   7. REGLAS RESPONSIVAS CENTRALIZADAS (MÓVILES Y TABLETS)
-   ========================================================================== */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px 10px;
-        gap: 10px;
-    }
-
-    .main-title-logo {
-        max-height: 60px;
-    }
-
-    .date-time {
-        text-align: center;
-    }
-
-    main {
-        padding: 180px 20px 40px 20px;
-    }
-
-    .category-label {
-        font-size: 1.8rem;
-    }
-
-    .card-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 15px;
-    }
-
-    .card-content {
-        height: 100px;
-    }
-
-    .legal-container {
-        padding: 20px;
-    }
-
-    .legal-container h1 {
-        font-size: 1.5rem;
-    }
-
-    .floating-banner {
-        left: 15px;
-        right: 15px;
-        bottom: 15px;
-        width: auto;
-    }
-
-    .floating-banner.closed {
-        transform: translateY(calc(100% + 30px));
-    }
-
-    .banner-tab {
-        bottom: 300px;
-    }
-}
-
-button:focus-visible,
-a:focus-visible {
-    outline: 2px solid #58a6ff;
-    outline-offset: 3px;
-}
-
-/* ==========================================================================
-   8. ESTILOS EXCLUSIVOS PARA INDEX-TV.HTML (MODO TV)
+   8. ESTILOS EXCLUSIVOS PARA MODO TV (INDEX-TV.HTML)
    ========================================================================== */
 body.tv-mode .tv-focusable {
     outline: none;
@@ -531,43 +640,69 @@ body.tv-mode footer a.tv-focusable:focus {
     outline: 2px solid #58a6ff;
 }
 
-.btn-tv-mode {
-    color: #ffffff;
-    background-color: #024380;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 8px 16px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+/* ==========================================================================
+   9. REGLAS RESPONSIVAS CENTRALIZADAS (MÓVILES Y TABLETS)
+   ========================================================================== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 10px;
+        gap: 10px;
+    }
+
+    .main-title-logo {
+        max-height: 60px;
+    }
+
+    .datetime-container {
+        align-items: center;
+        text-align: center;
+    }
+
+    main {
+        padding: 180px 20px 40px 20px;
+    }
+
+    .category-label {
+        font-size: 1.8rem;
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+
+    .card-content {
+        height: 100px;
+    }
+
+    .legal-container {
+        padding: 20px;
+    }
+
+    .legal-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .floating-banner {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        width: auto;
+    }
+
+    .floating-banner.closed {
+        transform: translateY(calc(100% + 30px));
+    }
+
+    .banner-tab {
+        bottom: 300px;
+    }
 }
 
-.btn-tv-mode:hover {
-    background-color: #276CF5;
-    transform: scale(1.05);
-}
-
-.header-right-group {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* Espacio entre los iconos, el botón y el reloj */
-}
-
-/* Agrega esto para garantizar que el contenedor de redes sociales esté alineado */
-.social-icons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.social-icon img {
-    display: block;
-    max-height: 28px; /* O el tamaño de tus iconos */
-    width: auto;
-}
-
-.social-icon img:hover {
-    opacity: 1;
-    transform: scale(1.1); /* Efecto sutil al pasar el cursor */
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid #58a6ff;
+    outline-offset: 3px;
 }
