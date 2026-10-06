@@ -51,6 +51,123 @@
 	</header>
 
 	<main>
+	
+	<!-- === BUSCADORES === -->
+	<!-- Contenedor principal que ahora coloca las tarjetas/buscadores en fila -->
+    <div class="search-section-wrapper">
+
+        <!-- --- BUSCADOR 1: PELÍCULAS, SERIES Y ANIMES --- -->
+        <div class="search-card-column">
+            <button type="button" onclick="toggleBuscadorPeliculas()" class="btn-toggle-search">
+                🔍 Buscar Película, Serie o Anime
+            </button>
+
+            <div id="searchContainerPeliculas" class="search-container collapsed">
+                <form onsubmit="realizarBusquedaPeliculas(event)">
+                    <div class="search-input-group">
+                        <input type="text" id="searchInputPeliculas" placeholder="Escribe el título..." required>
+                        <button type="submit" class="btn-search-submit">Buscar</button>
+                    </div>
+
+                    <div class="domains-control-group">
+                        <div class="domains-header">
+                            <span class="domains-label">Sitios de Películas/Series:</span>
+                            <label class="master-check-label">
+                                <input type="checkbox" id="checkMasterPeliculas" onchange="marcarTodosPeliculas(this)" checked>
+                                Seleccionar Todos
+                            </label>
+                        </div>
+
+                        <div class="domains-grid" id="domainsListPeliculas">
+                            <label><input type="checkbox" name="sitioPeli" value="cuevana3i.bid" checked onchange="actualizarMasterPeliculas()"> Cuevana 3</label>
+                            <label><input type="checkbox" name="sitioPeli" value="hyvideo.vercel.app" checked onchange="actualizarMasterPeliculas()"> HyVideo</label>
+                            <label><input type="checkbox" name="sitioPeli" value="cuevana8.plus" checked onchange="actualizarMasterPeliculas()"> Cuevana 8</label>
+                            <label><input type="checkbox" name="sitioPeli" value="lacartoons.com" checked onchange="actualizarMasterPeliculas()"> LaCartoons</label>
+                            <label><input type="checkbox" name="sitioPeli" value="jkanime.net" checked onchange="actualizarMasterPeliculas()"> JKAnime</label>
+                            <label><input type="checkbox" name="sitioPeli" value="doramasflix.io" checked onchange="actualizarMasterPeliculas()"> DoramasFlix</label>
+                            <label><input type="checkbox" name="sitioPeli" value="frikiserie.com" checked onchange="actualizarMasterPeliculas()"> Friki Serie</label>
+                            <label><input type="checkbox" name="sitioPeli" value="pelisflix1.today" checked onchange="actualizarMasterPeliculas()"> Pelis Flix</label>
+                            <label><input type="checkbox" name="sitioPeli" value="flixlatam.com" checked onchange="actualizarMasterPeliculas()"> Fixlatam</label>
+                            <label><input type="checkbox" name="sitioPeli" value="poseidonhd2.com" checked onchange="actualizarMasterPeliculas()"> Poseidon HD 2</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- --- BUSCADOR 2: CANALES EN VIVO --- -->
+        <div class="search-card-column">
+            <button type="button" onclick="toggleBuscadorCanales()" class="btn-toggle-search">
+                📡 Buscar Canales en Vivo
+            </button>
+
+            <div id="searchContainerCanales" class="search-container collapsed">
+                <form onsubmit="realizarBusquedaCanales(event)">
+                    <div class="search-input-group">
+                        <input type="text" id="searchInputCanales" placeholder="Escribe el canal o programa..." required>
+                        <button type="submit" class="btn-search-submit">Buscar</button>
+                    </div>
+
+                    <div class="domains-control-group">
+                        <div class="domains-header">
+                            <span class="domains-label">Sitios de Canales:</span>
+                            <label class="master-check-label">
+                                <input type="checkbox" id="checkMasterCanales" onchange="marcarTodosCanales(this)" checked>
+                                Seleccionar Todos
+                            </label>
+                        </div>
+
+                        <div class="domains-grid" id="domainsListCanales">
+                            <label><input type="checkbox" name="sitioCanal" value="tele-libre.live" checked onchange="actualizarMasterCanales()"> Tele Libre</label>
+                            <label><input type="checkbox" name="sitioCanal" value="tvporinternet.org" checked onchange="actualizarMasterCanales()"> TV por Internet</label>
+                            <label><input type="checkbox" name="sitioCanal" value="telegratuita.net" checked onchange="actualizarMasterCanales()"> Tele Gratuita</label>
+                            <label><input type="checkbox" name="sitioCanal" value="jetix2021.jahh19channel.xyz" checked onchange="actualizarMasterCanales()"> Jetix</label>
+                            <label><input type="checkbox" name="sitioCanal" value="boomerang2022.jahh19channel.xyz" checked onchange="actualizarMasterCanales()"> Boomerang</label>
+                            <label><input type="checkbox" name="sitioCanal" value="cn2021.jahh19channel.xyz" checked onchange="actualizarMasterCanales()"> Cartoon Network</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- --- BUSCADOR 3: JUEGOS --- -->
+        <div class="search-card-column">
+            <button type="button" onclick="toggleBuscadorJuegos()" class="btn-toggle-search">
+                🎮 Buscar Juegos
+            </button>
+
+            <div id="searchContainerJuegos" class="search-container collapsed">
+                <form onsubmit="realizarBusquedaJuegos(event)">
+                    <div class="search-input-group">
+                        <input type="text" id="searchInputJuegos" placeholder="Escribe el nombre del juego..." required>
+                        <button type="submit" class="btn-search-submit">Buscar</button>
+                    </div>
+
+                    <div class="domains-control-group">
+                        <div class="domains-header">
+                            <span class="domains-label">Sitios de Juegos:</span>
+                            <label class="master-check-label">
+                                <input type="checkbox" id="checkMasterJuegos" onchange="marcarTodosJuegos(this)" checked>
+                                Seleccionar Todos
+                            </label>
+                        </div>
+
+                        <div class="domains-grid" id="domainsListJuegos">
+                            <label><input type="checkbox" name="sitioJuego" value="playretrogames.online" checked onchange="actualizarMasterJuegos()"> Play Retro Games</label>
+                            <label><input type="checkbox" name="sitioJuego" value="retrogames.cc" checked onchange="actualizarMasterJuegos()"> Retro Games</label>
+                            <label><input type="checkbox" name="sitioJuego" value="gam.onl" checked onchange="actualizarMasterJuegos()"> Gam Onl</label>
+                            <label><input type="checkbox" name="sitioJuego" value="crashbash.app" checked onchange="actualizarMasterJuegos()"> Crash Bash Online</label>
+                            <label><input type="checkbox" name="sitioJuego" value="pes6.optijuegos.net" checked onchange="actualizarMasterJuegos()"> PES 6 Online</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
 
 		<!-- === SECCIÓN 1: RYU MOVIES === -->
 		<section class="section-category">
@@ -117,6 +234,13 @@
 				<a href="https://flixlatam.com/" target="_blank" class="grid-card" rel="noopener noreferrer">
 					<div class="card-content">
 						<img src="imagenes/fixlatam.jpg" alt="Fixlatam" class="card-image" loading="lazy">
+					</div>
+				</a>
+
+				<!-- TARJETA 8 -->
+				<a href="https://www.poseidonhd2.co/" target="_blank" class="grid-card" rel="noopener noreferrer">
+					<div class="card-content">
+						<img src="imagenes/poseidonhd2.jpg" alt="Poseidon HD 2" class="card-image" loading="lazy">
 					</div>
 				</a>
 

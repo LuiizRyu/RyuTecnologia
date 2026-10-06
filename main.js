@@ -165,3 +165,117 @@ function cerrarModal() {
 				});
 			}
 		}
+		
+/*JS Buscador*/
+// --- CONTROLADORES PARA PELÍCULAS Y SERIES ---
+function toggleBuscadorPeliculas() {
+    const contenedor = document.getElementById('searchContainerPeliculas');
+    contenedor.classList.toggle('collapsed');
+}
+
+function realizarBusquedaPeliculas(event) {
+    event.preventDefault();
+    const query = document.getElementById('searchInputPeliculas').value.trim();
+    const checkboxes = document.querySelectorAll('input[name="sitioPeli"]:checked');
+    
+    if (checkboxes.length === 0) {
+        alert("Por favor selecciona al menos un sitio de películas.");
+        return;
+    }
+    
+    let filtrosSitios = checkboxes.length === 1 
+        ? `site:${checkboxes[0].value}` 
+        : `(${Array.from(checkboxes).map(cb => `site:${cb.value}`).join(' OR ')})`;
+    
+    const urlBusqueda = `https://search.brave.com/search?q=${encodeURIComponent(query)}+${encodeURIComponent(filtrosSitios)}`;
+    window.open(urlBusqueda, '_blank');
+}
+
+function marcarTodosPeliculas(master) {
+    document.querySelectorAll('input[name="sitioPeli"]').forEach(cb => cb.checked = master.checked);
+}
+
+function actualizarMasterPeliculas() {
+    const checkboxes = document.querySelectorAll('input[name="sitioPeli"]');
+    const master = document.getElementById('checkMasterPeliculas');
+    const todos = Array.from(checkboxes).every(cb => cb.checked);
+    const alguno = Array.from(checkboxes).some(cb => cb.checked);
+    master.checked = todos;
+    master.indeterminate = alguno && !todos;
+}
+
+
+// --- CONTROLADORES PARA CANALES EN VIVO ---
+function toggleBuscadorCanales() {
+    const contenedor = document.getElementById('searchContainerCanales');
+    contenedor.classList.toggle('collapsed');
+}
+
+function realizarBusquedaCanales(event) {
+    event.preventDefault();
+    const query = document.getElementById('searchInputCanales').value.trim();
+    const checkboxes = document.querySelectorAll('input[name="sitioCanal"]:checked');
+    
+    if (checkboxes.length === 0) {
+        alert("Por favor selecciona al menos un canal.");
+        return;
+    }
+    
+    let filtrosSitios = checkboxes.length === 1 
+        ? `site:${checkboxes[0].value}` 
+        : `(${Array.from(checkboxes).map(cb => `site:${cb.value}`).join(' OR ')})`;
+    
+    const urlBusqueda = `https://search.brave.com/search?q=${encodeURIComponent(query)}+${encodeURIComponent(filtrosSitios)}`;
+    window.open(urlBusqueda, '_blank');
+}
+
+function marcarTodosCanales(master) {
+    document.querySelectorAll('input[name="sitioCanal"]').forEach(cb => cb.checked = master.checked);
+}
+
+function actualizarMasterCanales() {
+    const checkboxes = document.querySelectorAll('input[name="sitioCanal"]');
+    const master = document.getElementById('checkMasterCanales');
+    const todos = Array.from(checkboxes).every(cb => cb.checked);
+    const alguno = Array.from(checkboxes).some(cb => cb.checked);
+    master.checked = todos;
+    master.indeterminate = alguno && !todos;
+}
+
+
+// --- CONTROLADORES PARA JUEGOS ---
+function toggleBuscadorJuegos() {
+    const contenedor = document.getElementById('searchContainerJuegos');
+    contenedor.classList.toggle('collapsed');
+}
+
+function realizarBusquedaJuegos(event) {
+    event.preventDefault();
+    const query = document.getElementById('searchInputJuegos').value.trim();
+    const checkboxes = document.querySelectorAll('input[name="sitioJuego"]:checked');
+    
+    if (checkboxes.length === 0) {
+        alert("Por favor selecciona al menos un sitio de juegos.");
+        return;
+    }
+    
+    let filtrosSitios = checkboxes.length === 1 
+        ? `site:${checkboxes[0].value}` 
+        : `(${Array.from(checkboxes).map(cb => `site:${cb.value}`).join(' OR ')})`;
+    
+    const urlBusqueda = `https://search.brave.com/search?q=${encodeURIComponent(query)}+${encodeURIComponent(filtrosSitios)}`;
+    window.open(urlBusqueda, '_blank');
+}
+
+function marcarTodosJuegos(master) {
+    document.querySelectorAll('input[name="sitioJuego"]').forEach(cb => cb.checked = master.checked);
+}
+
+function actualizarMasterJuegos() {
+    const checkboxes = document.querySelectorAll('input[name="sitioJuego"]');
+    const master = document.getElementById('checkMasterJuegos');
+    const todos = Array.from(checkboxes).every(cb => cb.checked);
+    const alguno = Array.from(checkboxes).some(cb => cb.checked);
+    master.checked = todos;
+    master.indeterminate = alguno && !todos;
+}
